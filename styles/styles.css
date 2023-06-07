@@ -1,0 +1,385 @@
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+* ul,
+* dl,
+* dt,
+* dd,
+* h1,
+* h2,
+* p {
+  margin: 0;
+  padding: 0;
+}
+
+* ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.button-search {
+  background-image: url("/images/search.png");
+  background-position: 2px 2px;
+  margin-top: -1px;
+  width: 30px;
+  height: 30px;
+}
+
+.button-search:focus {
+  outline: 2px solid #000000 ;
+  outline-offset: 1px;
+}
+
+.button-tab-now-favourite {
+  fill: none;
+  opacity: 0.5;
+  stroke: black;
+  stroke-width: 2;
+}
+
+.button-tab-now-favourite:hover {
+  fill: red;
+  stroke: none;
+  transform: scale(1.2);
+  transition: 0.5s;
+}
+
+.button-now,
+.button-details,
+.button-forecast {
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  width: 33.33%;
+}
+
+.button-now,
+.button-details {
+  border-right: 1px solid #000000;
+}
+
+.button-tab:hover {
+  color: #ffffff;
+  background-color: #000000;
+  transition: 0.5s;
+}
+
+.button-tab:active {
+  color: #f2f2f2;
+  transition: 1s;
+}
+
+.weather-app {
+  display: grid;
+  grid-template-columns: repeat(2, 300px);
+  grid-template-rows: auto 400px 30px;
+}
+
+.tabs {
+  overflow: auto;
+}
+
+/* Строка поиска */
+
+.search-bar-form {
+  grid-column: 1 / -1;
+  position: relative;
+  outline: none;
+}
+
+.search-bar {
+  border: none;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.search-bar:focus {
+  outline: none;
+}
+
+.search-bar:placeholder-shown {
+  font-size: 18px;
+}
+
+.search-bar {
+  width: 100%;
+  height: 40px;
+  padding: 5px 35px 5px 10px;
+  box-sizing: border-box;
+}
+
+.button-search {
+  position: absolute;
+  top: 6px;
+  right: 5px;
+}
+
+/* Сообщение об ошибке */
+
+.error {
+  position: absolute;
+  top: -21px;
+  right: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: red;
+}
+
+/* Вкладка Now */
+
+.tab-now {
+  display: grid;
+  grid-template-rows: 150px 100px 145px;
+}
+
+.tab-now-temp {
+  padding: 10px 0 10px 10px;
+  font-size: 70px;
+  line-height: 82px;
+}
+
+.current-temp-wrapper {
+  display: flex;
+}
+
+.degree {
+  padding: 10px 10px 10px 0;
+  font-size: 50px;
+}
+
+.tab-now-weather-icon {
+  margin: auto;
+}
+
+.animation {
+  transform: scale(1.5);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(2);
+  }
+  50% {
+    transform: scale(2.5);
+  }
+  to {
+    transform: scale(2);
+  }
+}
+
+.tab-now-inner-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 10px 10px;
+}
+
+/* Кнопки */
+
+.buttons-wrapper {
+  grid-column: 1 / 2;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Сохраненные города */
+
+.locations {
+  grid-row: 2 / 4;
+  grid-column: 2 / -1;
+}
+
+.weather-app,
+.search-bar-form,
+.tabs,
+.buttons-wrapper,
+.locations {
+  border: 1px solid black;
+}
+
+.added-location {
+  padding: 33px 45px 5px 10px;
+  border-bottom: 2px solid black;
+}
+
+.locations-list {
+  font-size: 20px;
+  height: 300px;
+  padding: 25px 45px 25px 10px;
+  overflow: auto;
+}
+
+.locations-item:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.locations-item {
+  padding-left: 5px;
+  position: relative;
+}
+
+.button-close-locations-item {
+  appearance: none;
+  border: none;
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iNDgiIGhlaWdodD0iNDgiCnZpZXdCb3g9IjAgMCA0OCA0OCI+CjxwYXRoIGQ9Ik0gMzguOTgyNDIyIDYuOTcwNzAzMSBBIDIuMDAwMiAyLjAwMDIgMCAwIDAgMzcuNTg1OTM4IDcuNTg1OTM3NSBMIDI0IDIxLjE3MTg3NSBMIDEwLjQxNDA2MiA3LjU4NTkzNzUgQSAyLjAwMDIgMi4wMDAyIDAgMCAwIDguOTc4NTE1NiA2Ljk4MDQ2ODggQSAyLjAwMDIgMi4wMDAyIDAgMCAwIDcuNTg1OTM3NSAxMC40MTQwNjIgTCAyMS4xNzE4NzUgMjQgTCA3LjU4NTkzNzUgMzcuNTg1OTM4IEEgMi4wMDAyIDIuMDAwMiAwIDEgMCAxMC40MTQwNjIgNDAuNDE0MDYyIEwgMjQgMjYuODI4MTI1IEwgMzcuNTg1OTM4IDQwLjQxNDA2MiBBIDIuMDAwMiAyLjAwMDIgMCAxIDAgNDAuNDE0MDYyIDM3LjU4NTkzOCBMIDI2LjgyODEyNSAyNCBMIDQwLjQxNDA2MiAxMC40MTQwNjIgQSAyLjAwMDIgMi4wMDAyIDAgMCAwIDM4Ljk4MjQyMiA2Ljk3MDcwMzEgeiI+PC9wYXRoPgo8L3N2Zz4=');
+  background-color: transparent;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: 100%; 
+  cursor: pointer;
+}
+
+.button-close-locations-item{
+  background-color: #ffffff;
+}
+
+.locations-item:hover {
+  color: #ffffff;
+  background-color: #000000;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+/* Вкладка Details */
+
+.tab-details-current-city {
+  padding: 33px 10px 0 10px;
+  margin-bottom: 33px;
+}
+
+.tab-details-forecast-list {
+  font-size: 20px;
+  padding-left: 10px;
+}
+
+.dl-wrapper {
+  display: flex;
+  vertical-align:bottom;
+}
+
+.dl-wrapper:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.dl-wrapper dt,
+.forecast-dl-wrapper dt {
+  margin-right: 7px;
+}
+
+.dl-wrapper dd {
+  font-weight: 700;
+}
+
+.temp-wrapper {
+  display: flex;
+  height: auto;
+}
+
+.temp-wrapper .degree {
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: auto;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Вкладка Forecast */
+
+.tab-forecast-current-city {
+  padding: 33px 10px 0 15px;
+  margin-bottom: 5px;
+  align-self: flex-start;
+}
+
+.tab-forecast-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: auto;
+  height: 300px;
+  row-gap: 10px;
+}
+
+.tab-forecast-card {
+  width: 90%;
+  display: grid;
+  grid-template-columns: 150px, 30px;
+  grid-template-rows: 100px, 100px;
+  gap: 20px 5px;
+  border: 1px solid #000000;
+  padding: 5px 5px;
+  box-sizing: border-box;
+}
+
+.time-card-wrapper {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tab-forecast-forecast-list {
+  grid-row: 2 / 3;
+  grid-column: 1 / 2;
+}
+
+.weather-forecast-wrapper {
+  grid-column: 2 / -1;
+  grid-row: 2 / 3;
+  justify-self: end;
+  align-self: flex-end;
+  display: flex;
+  flex-direction: column;
+}
+
+.forecast-dl-wrapper {
+  display: flex;
+}
+
+.tab-now {
+  display: none;
+}
+
+.tab-details {
+  display: none;
+}
+
+.tab-forecast {
+  display: none;
+}
+
+.tab-active {
+  display: grid;
+}
+
+.button-tab-active {
+  background-color: #000000;
+  color: #ffffff;
+}
